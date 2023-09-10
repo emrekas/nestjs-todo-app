@@ -18,6 +18,13 @@ export class UserService {
       data: {
         ...dto,
       },
+      select: {
+        id: true,
+        email: true,
+        nickName: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
 
     return user;

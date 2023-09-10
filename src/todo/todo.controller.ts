@@ -35,7 +35,7 @@ export class TodoController {
   getTaskById(
     @CurrentUser() user: User,
     @Param('id', ParseIntPipe) taskId: number,
-  ): Promise<Task> {
+  ): Promise<Task | null> {
     return this.todoService.getTaskById(user.id, taskId);
   }
 
