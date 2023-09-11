@@ -9,7 +9,16 @@ export class TodoService {
   constructor(private prisma: PrismaService) {}
 
   getTasks(userId: number): Promise<Task[]> {
-    return this.prisma.task.findMany({
+    const prisma = this.prisma.$extends({
+      result: {
+        task: {
+          titleLength: {
+            compute: (task) => task.title.length,
+          },
+        },
+      },
+    });
+    return prisma.task.findMany({
       where: {
         userId,
       },
