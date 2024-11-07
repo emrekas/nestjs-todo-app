@@ -61,4 +61,16 @@ export class AuthService {
       accessToken: token,
     };
   }
+
+  async forgotPassword(dto: AuthDto): Promise<Msg> {
+    const user = await this.prisma.user.findUnique({
+      where: {
+        email: dto.email,
+      },
+    });
+    if (!user) throw new ForbiddenException('Email not found');
+    return {
+      message: 'ok',
+    };
+  }
 }

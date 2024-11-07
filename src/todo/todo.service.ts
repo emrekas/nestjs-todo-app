@@ -82,4 +82,8 @@ export class TodoService {
       },
     });
   }
+
+  async do_something(): Promise<number> {
+    return 42;
+  }
 }
