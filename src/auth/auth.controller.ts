@@ -17,4 +17,9 @@ export class AuthController {
     const { accessToken } = await this.authService.login(dto);
     return { accessToken };
   }
+
+  @Post('forgot-password')
+  forgotPassword(@Body() dto: AuthDto): Promise<Msg> {
+    return this.authService.forgotPassword(dto);
+  }
 }

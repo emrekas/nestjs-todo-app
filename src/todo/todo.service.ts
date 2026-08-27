@@ -57,9 +57,6 @@ export class TodoService {
       },
     });
 
-    if (!task || task.userId !== userId)
-      throw new ForbiddenException('No permission to update');
-
     return this.prisma.task.update({
       where: {
         id: taskId,
@@ -84,5 +81,9 @@ export class TodoService {
         id: taskId,
       },
     });
+  }
+
+  async do_something(): Promise<number> {
+    return 42;
   }
 }

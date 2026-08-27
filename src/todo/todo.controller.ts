@@ -64,4 +64,9 @@ export class TodoController {
   ): Promise<void> {
     return this.todoService.deleteTaskById(user.id, taskId);
   }
+
+  @Post('doSomething')
+  calculate(@CurrentUser() user: User): Promise<number> {
+    return this.todoService.do_something();
+  }
 }
